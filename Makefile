@@ -6,7 +6,7 @@
 #    By: ekuchel <ekuchel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 16:52:32 by ekuchel           #+#    #+#              #
-#    Updated: 2023/10/05 17:10:17 by ekuchel          ###   ########.fr        #
+#    Updated: 2023/10/05 17:39:46 by ekuchel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,7 @@ S = src/
 O = obj/
 
 HDRS_DIR = ./includes/
-LIB_DIR = ./lib/libft/
 HDRS = -I$(HDRS_DIR)
-LIBS = -L$(LIB_DIR)
 
 
 SRC = $S/main.c \
@@ -45,7 +43,7 @@ all : $(NAME)
 	@echo "Philo successfully compiled!";
 
 $(NAME) : $(OBJ)
-	$(CC) $(CFLAGS) $(LIBS) $(HDRS) $^ -o $@
+	$(CC) $(CFLAGS) $(HDRS) $^ -o $@
 
 cleanobj:
 	$(RM) $(OBJ)
