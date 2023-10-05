@@ -6,7 +6,7 @@
 #    By: ekuchel <ekuchel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 16:52:32 by ekuchel           #+#    #+#              #
-#    Updated: 2023/10/05 17:39:46 by ekuchel          ###   ########.fr        #
+#    Updated: 2023/10/05 18:00:38 by ekuchel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ clean: cleanobjdir
 
 fclean: clean
 	$(RM) $(NAME)
-	@echo "Cleaning minishell... ";
+	@echo "Cleaning philo... ";
 
 re: fclean all
 
