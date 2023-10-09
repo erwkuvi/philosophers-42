@@ -6,7 +6,7 @@
 #    By: ekuchel <ekuchel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 16:52:32 by ekuchel           #+#    #+#              #
-#    Updated: 2023/10/09 15:42:25 by ekuchel          ###   ########.fr        #
+#    Updated: 2023/10/09 17:39:36 by ekuchel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,14 +17,14 @@ BLUE = \033[0;34m
 RESET = \033[0m
 
 S = ./src/
+HDRS_DIR = ./includes/
 
 NAME = philo
 
 SRC = $(S)/main.c \
 
-HDRS_DIR = ./includes/
-HDRS = -I$(HDRS_DIR)
 
+HDRS = -I$(HDRS_DIR)
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 

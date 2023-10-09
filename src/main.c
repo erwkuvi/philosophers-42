@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:21:17 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/09 15:47:10 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/09 18:05:04 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ and X with the philosopher number.
 
 if (time since start of last meal > time of death)
 	Philosopher dies.*/
+
+/*1. Proposal - Semaphores
+
+*/
 
 // void	ft_philo(int argc, char **argv)
 // {
