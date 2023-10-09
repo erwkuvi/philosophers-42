@@ -6,7 +6,7 @@
 #    By: ekuchel <ekuchel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 16:52:32 by ekuchel           #+#    #+#              #
-#    Updated: 2023/10/09 17:39:36 by ekuchel          ###   ########.fr        #
+#    Updated: 2023/10/09 18:23:52 by ekuchel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,10 @@ all : $(NAME)
 
 $(NAME) : $(SRC)
 	$(CC) $(CFLAGS) $(HDRS) $^ -o $@
+	@echo "$(YELLOW)Compiling Philosophers ...$(RESET)";
+	@sleep 1
+	@echo "$(YELLOW) ... (wait)$(RESET)";
+	@sleep 1
 
 clean:
 	$(RM) -r $(NAME)
