@@ -6,32 +6,24 @@
 #    By: ekuchel <ekuchel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 16:52:32 by ekuchel           #+#    #+#              #
-#    Updated: 2023/10/05 18:00:38 by ekuchel          ###   ########.fr        #
+#    Updated: 2023/10/09 15:42:25 by ekuchel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#Sources and object files are going to be in a sub-directory from now on
-S = src/
-O = obj/
+RED = \033[0;31m
+GREEN = \033[0;32m
+YELLOW = \033[0;33m
+BLUE = \033[0;34m
+RESET = \033[0m
+
+S = ./src/
+
+NAME = philo
+
+SRC = $(S)/main.c \
 
 HDRS_DIR = ./includes/
 HDRS = -I$(HDRS_DIR)
-
-
-SRC = $S/main.c \
-	#   $Sfunction.c
-
-OBJ = $(SRC:$S%=$O%.o) ##Be careful, here we use "SRC:", not "$(SRC):"
-
-$O:
-	@mkdir -p $@
-# The @ at the beginning of the line prevents make
-# from displaying the line before executing it
-
-$O%.o: $S% | $O
-	$(CC) $(CFLAGS) -c $< -o $@
-
-NAME = philo
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
@@ -40,22 +32,17 @@ RM = /bin/rm -f
 RMDIR = /bin/rmdir
 
 all : $(NAME)
-	@echo "Philo successfully compiled!";
+	@echo "$(GREEN)Philosophers successfully compiled!$(RESET)";
 
-$(NAME) : $(OBJ)
+$(NAME) : $(SRC)
 	$(CC) $(CFLAGS) $(HDRS) $^ -o $@
 
-cleanobj:
-	$(RM) $(OBJ)
-
-cleanobjdir: cleanobj
-	$(RMDIR) $O
-
-clean: cleanobjdir
+clean:
+	$(RM) -r $(NAME)
 
 fclean: clean
-	$(RM) $(NAME)
-	@echo "Cleaning philo... ";
+	$(RM) -f $(NAME)
+	@echo "$(BLUE)Cleaning philo... $(RESET)";
 
 re: fclean all
 
