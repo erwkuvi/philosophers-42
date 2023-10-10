@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekuchel <ekuchel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ekuchel <ekuchel@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:21:17 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/09 18:05:04 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/10 10:49:02 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,29 +33,30 @@ if (time since start of last meal > time of death)
 
 */
 
-// void	ft_philo(int argc, char **argv)
-// {
-
-// }
-
-void	print_philo(int number)
+void	*ft_print(void *arg)
 {
-	printf(GREEN"%d", number);
-	return ;
+	(void) arg;
+	printf("Test\n");
+	return (NULL);
+}
+
+void	ft_philo(void)
+{
+	pthread_t	t1;
+
+	pthread_create(&t1, NULL, ft_print, NULL);
+	pthread_join(t1, NULL);
 }
 
 int	main(int argc, char **argv)
 {
 	(void)argv;
-	if (argc < 5 || argc > 6)
-	{
-		perror(RED"Try: .philo arg1 arg2 arg3 arg4");
-		exit (1);
-	}
+	// if (argc < 5 || argc > 6)
+	// {
+	// 	perror(RED"Try: .philo arg1 arg2 arg3 arg4");
+	// 	exit (1);
+	// }
 	if (argc <= 6)
-	{
-		// ft_philo(argc, argv);
-		printf("Test");
-	}
+		ft_philo();
 	return (0);
 }
