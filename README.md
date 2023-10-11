@@ -24,3 +24,24 @@ Project Objectives:
 
 What are threads?
 	Threads in the context of APIs (Application Programming Interfaces) typically refer to threads of execution within a program. Threads are a fundamental concept in multithreading, which is a way to achieve concurrent execution of code in a single process. APIs that deal with threads provide functions and mechanisms for managing and controlling these threads.
+
+pthread.h
+
+pthread_t -> declaration
+
+pthread_create()
+pthread_join()
+
+pthread_mutex_t -> declaration
+pthread_mutex_init()
+	pthread_mutex_lock()
+	pthread_mutex_unlock()
+pthread_mutex_destroy()
+
+--> Semaphore <--
+semaphore.h
+sem_t -> declaration
+sem_init()
+--> Semaphore <-- end
+
+

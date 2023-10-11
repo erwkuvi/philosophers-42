@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekuchel <ekuchel@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: ekuchel <ekuchel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:21:17 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/10 10:49:02 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/11 15:49:03 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,23 @@ void	*ft_print(void *arg)
 	return (NULL);
 }
 
-void	ft_philo(void)
+void	ft_philo(void *arg)
 {
-	pthread_t	t1;
-
-	pthread_create(&t1, NULL, ft_print, NULL);
-	pthread_join(t1, NULL);
+	printf("Value passed is :%d\n", (int *)arg);
 }
 
 int	main(int argc, char **argv)
 {
+	int				val;
+	pthread_mutex_t	mutex;
+	pthread_t		t1;
+
 	(void)argv;
+	val = 1;
+	pthread_create(&t1, NULL, ft_print, (void *) &val);
+	pthread_mutex_init(&mutex, NULL);
+	pthread_join(t1, NULL);
+
 	// if (argc < 5 || argc > 6)
 	// {
 	// 	perror(RED"Try: .philo arg1 arg2 arg3 arg4");
@@ -58,5 +64,6 @@ int	main(int argc, char **argv)
 	// }
 	if (argc <= 6)
 		ft_philo();
+	pthread_mutex_destroy(&mutex);
 	return (0);
 }
