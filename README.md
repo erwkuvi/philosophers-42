@@ -22,7 +22,7 @@ Project Objectives:
 - Explore different solutions to the Dining Philosophers problem, such as avoiding deadlock, starvation, and achieving fairness.
 
 
-What are threads?
+What are Threads?
 	Threads in the context of APIs (Application Programming Interfaces) typically refer to threads of execution within a program. Threads are a fundamental concept in multithreading, which is a way to achieve concurrent execution of code in a single process. APIs that deal with threads provide functions and mechanisms for managing and controlling these threads.
 
 pthread.h
@@ -44,4 +44,7 @@ sem_t -> declaration
 sem_init()
 --> Semaphore <-- end
 
-
+Ext. functs:
+void	*memset(void *b, int c, size_t len); -> The memset() function writes len bytes of value c (converted to an unsigned char) to the string b.
+int		usleep(useconds_t microseconds); -> suspend thread execution for an interval measured in microseconds
+int		gettimeofday(struct timeval *restrict tp, void *restrict tzp); -> get date and time
