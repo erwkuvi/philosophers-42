@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:44:05 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/13 22:24:37 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/14 00:58:56 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ typedef struct s_data
 /*------ utils.c ------*/
 int	ft_atoi(const char *str);
 int	ft_isdigit(int c);
+/*------ error.c ------*/
+int	error_handling(int argc, char **argv);
+
+
 
 
 #endif
