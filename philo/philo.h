@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekuchel <ekuchel@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: ekuchel <ekuchel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:44:05 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/12 18:22:26 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/13 18:32:42 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,27 @@
 # include <sys/time.h>
 # include <pthread.h>
 
+# define DEAD		0
+# define EATING		1
+# define SLEEPING	2
+
+
 typedef struct s_philo
 {
-	pthread_t	philo_n;
+	int				state;
+	pthread_mutex_t	mutex;
+	pthread_t		philo_thread;
+
 }	t_philo;
+
+typedef struct s_data
+{
+	int	philo_n;
+	int	time2die;
+	int	time2eat;
+	int	time2sleep;
+	int	meals;
+}	t_data;
 
 // ANSI color codes
 # define RESET   "\x1B[0m"
