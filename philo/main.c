@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekuchel <ekuchel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:21:17 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/13 18:42:49 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/14 00:46:52 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,31 @@ if (time since start of last meal > time of death)
 // 	// printf("%d %s has taken a fork", philo->philo_n);
 // 	return (NULL);
 // }
+int	error_handling(int argc, char **argv)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	if (argc < 5 || argc > 6)
+	{
+		printf(RED"Error, wrong number of arguments\n"RESET);
+		return (1);
+	}
+	while (argv[++i])
+	{
+		j = -1;
+		while (argv[i][++j])
+		{
+			if (!ft_isdigit(argv[i][j]))
+			{
+				printf(RED"Error, not numerical arguments\n"RESET);
+				return (1);
+			}
+		}
+	}
+	return (0);
+}
 
 t_data	*data_init()
 {
@@ -63,7 +88,10 @@ t_data	*data_init()
 
 int	main(int argc, char **argv)
 {
-	t_data	*data;
+	// t_data	*data;
+
+	if (error_handling(argc, argv))
+		return (1);
 
 	// philo_n = ft_atoi(argv[1]);
 	// if (argc < 5 || argc > 6)
@@ -71,11 +99,9 @@ int	main(int argc, char **argv)
 	// 	perror(RED"Try: .philo arg1 arg2 arg3 arg4");
 	// 	exit (1);
 	// }
-	if (argc <= 6)
-	{
-		// ft_pthread();
-		printf("Current seconds: %ld\n", seconds);
-		printf("Current microseconds: %d\n", microseconds);
-	}
+	// if (argc <= 6)
+	// {
+	// 	// ft_pthread();
+	// }
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekuchel <ekuchel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:44:05 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/13 18:32:42 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/13 22:24:37 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,10 @@ typedef struct s_data
 # define MAGENTA "\x1B[35m"
 # define CYAN    "\x1B[36m"
 # define WHITE   "\x1B[37m" // thinking
+
+/*------ utils.c ------*/
+int	ft_atoi(const char *str);
+int	ft_isdigit(int c);
+
 
 #endif
