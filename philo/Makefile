@@ -6,7 +6,7 @@
 #    By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 16:52:32 by ekuchel           #+#    #+#              #
-#    Updated: 2023/10/14 00:42:31 by ekuchel          ###   ########.fr        #
+#    Updated: 2023/10/14 23:22:25 by ekuchel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ NAME = philo
 
 SRC = $(S)main.c \
 	$(S)utils.c \
+	$(S)error.c \
 
 # List of object files derived from the source files
 OBJ = $(SRC:.c=.o)
@@ -63,7 +64,7 @@ $(NAME) : $(OBJ)
 	$(CC) $(CFLAGS) $(HDRS) -c $< -o $@
 
 run : $(NAME)
-	./$(NAME)
+	./$(NAME) 4 410 200 200 
 
 clean:
 	$(RM) -f $(OBJ)
@@ -72,7 +73,7 @@ fclean: clean
 	$(RM) -f $(NAME)
 	@echo "$(BLUE)Cleaning philo... $(RESET)";
 
-re: fclean all
+re: fclean all run
 
 .PHONY: all clean fclean re run
 #%.o:%.c

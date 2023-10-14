@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:44:05 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/14 00:58:56 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/14 23:27:00 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_data
 	int	time2eat;
 	int	time2sleep;
 	int	meals;
+	int	odd;
 }	t_data;
 
 // ANSI color codes

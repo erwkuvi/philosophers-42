@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:21:17 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/14 00:59:11 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/14 23:46:50 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,11 @@ valgrind --tool=helgrind ./philo   checks for data races
 */
 
 /*One or more philosophers sit at a round table*/
+
+
 /* ./philo #of_philos time2die time2eat time2sleep [#of_times_each_philo_must_eat]*/
+
+
 
 /*Time of last meal = Time of start eating.
 
@@ -52,21 +56,34 @@ if (time since start of last meal > time of death)
 // 	// printf("%d %s has taken a fork", philo->philo_n);
 // 	return (NULL);
 // }
+int iseven(int n)
+{
+	return (n % 2);
+}
 
-t_data	*data_init()
+t_data	*data_init(char **argv)
 {
 	t_data	*data;
+	
 	data = malloc(sizeof(data));
-
+	data->philo_n = ft_atoi(argv[1]);
+	data->time2die = ft_atoi(argv[2]);
+	data->time2eat = ft_atoi(argv[3]);
+	data->time2sleep = ft_atoi(argv[4]);
+	if (argv[5])
+		data->meals = ft_atoi(argv[5]);
+	else
+		data->meals = 0;
+	data->odd = iseven(data->philo_n);
 	return (data);
 }
 
 int	main(int argc, char **argv)
 {
-	// t_data	*data;
+	t_data	*data;
 
 	if (error_handling(argc, argv))
 		return (1);
-
+	data = data_init(argv);
 	return (0);
 }
