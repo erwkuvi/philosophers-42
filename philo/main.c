@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:21:17 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/16 11:51:02 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/16 17:50:45 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,6 @@ if (time since start of last meal > time of death)
 // 	// printf("%d %s has taken a fork", philo->philo_n);
 // 	return (NULL);
 // }
-int	iseven(int n)
-{
-	return (n % 2);
-}
 
 t_data	*data_init(char **argv)
 {

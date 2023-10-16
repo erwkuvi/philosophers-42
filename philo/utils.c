@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 21:58:34 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/16 11:43:59 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/16 14:41:38 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,32 @@ int	ft_atoi(const char *str)
 	int	i;
 	int	res;
 	int	posneg;
+
+	posneg = 1;
+	i = 0;
+	res = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			posneg *= -1;
+		i++;
+	}
+	while (str[i] >= 48 && str[i] <= 57)
+	{
+		res *= 10;
+		res = res + (str[i] - '0');
+		i++;
+	}
+	return (res * posneg);
+}
+
+long	ft_atoil(const char *str)
+{
+	int		i;
+	long	res;
+	int		posneg;
 
 	posneg = 1;
 	i = 0;
@@ -66,4 +92,9 @@ void	ft_putstr_fd(char *s, int fd)
 		ft_putchar_fd(s[i], fd);
 		i++;
 	}
+}
+
+int	iseven(int n)
+{
+	return (n % 2);
 }

@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:44:05 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/16 11:44:55 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/16 18:01:00 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,33 @@
 
 typedef struct s_philo
 {
-	int				state;
-	pthread_mutex_t	mutex;
 	pthread_t		philo_thread;
+	int				id;
+	int				eating;
+	int				meals_eaten;
+	size_t			last_meal;
+	size_t			time2die;
+	size_t			time2eat;
+	size_t			time2sleep;
+	size_t			starttime;
+	int				times2eat_n;
+	int				*state;
+	pthread_mutex_t	*fork_r;
+	pthread_mutex_t	*fork_l;
+	pthread_mutex_t	*write_lock;
+	pthread_mutex_t	*dead_lock;
+	pthread_mutex_t	*meal_lock;
+	int				philo_n;
 
 }	t_philo;
 
 typedef struct s_data
 {
-	int	philo_n;
-	int	time2die;
-	int	time2eat;
-	int	time2sleep;
-	int	meals;
-	int	odd;
+	pthread_mutex_t	dead_lock;
+	pthread_mutex_t	meal_lock;
+	pthread_mutex_t	write_lock;
+	int				state;
+	t_philo			*philos;
 }	t_data;
 
 // ANSI color codes
@@ -55,8 +68,11 @@ typedef struct s_data
 
 /*------ utils.c ------*/
 int		ft_atoi(const char *str);
+long	ft_atoil(const char *str);
 int		ft_isdigit(int c);
 void	ft_putstr_fd(char *s, int fd);
+int		iseven(int n);
+
 /*------ error.c ------*/
 int		error_handling(int argc, char **argv);
 
