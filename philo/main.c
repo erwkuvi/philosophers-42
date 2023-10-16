@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: ekuchel <ekuchel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:21:17 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/14 23:46:50 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/16 11:51:02 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ if (time since start of last meal > time of death)
 // 	// printf("%d %s has taken a fork", philo->philo_n);
 // 	return (NULL);
 // }
-int iseven(int n)
+int	iseven(int n)
 {
 	return (n % 2);
 }
@@ -64,7 +64,7 @@ int iseven(int n)
 t_data	*data_init(char **argv)
 {
 	t_data	*data;
-	
+
 	data = malloc(sizeof(data));
 	data->philo_n = ft_atoi(argv[1]);
 	data->time2die = ft_atoi(argv[2]);

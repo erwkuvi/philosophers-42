@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: ekuchel <ekuchel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:44:05 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/14 23:27:00 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/16 11:44:55 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,11 @@ typedef struct s_data
 # define WHITE   "\x1B[37m" // thinking
 
 /*------ utils.c ------*/
-int	ft_atoi(const char *str);
-int	ft_isdigit(int c);
+int		ft_atoi(const char *str);
+int		ft_isdigit(int c);
+void	ft_putstr_fd(char *s, int fd);
 /*------ error.c ------*/
-int	error_handling(int argc, char **argv);
+int		error_handling(int argc, char **argv);
 
 
 
