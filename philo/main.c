@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekuchel <ekuchel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:21:17 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/16 17:50:45 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/17 17:20:27 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,11 @@ valgrind --tool=helgrind ./philo   checks for data races
 
 /*One or more philosophers sit at a round table*/
 
+/* ./philo #of_philos time2die time2eat time2sleep
+[#of_times_each_philo_must_eat]*/
 
-/* ./philo #of_philos time2die time2eat time2sleep [#of_times_each_philo_must_eat]*/
-
-
+/*For 200ms of usleep this machine adds 2.890ms of delay on average
+Peak delay: 5.041ms*/
 
 /*Time of last meal = Time of start eating.
 
@@ -57,29 +58,31 @@ if (time since start of last meal > time of death)
 // 	return (NULL);
 // }
 
-t_data	*data_init(char **argv)
+void	philo_init(t_philo *philo, t_data *data)
 {
-	t_data	*data;
-
-	data = malloc(sizeof(data));
-	data->philo_n = ft_atoi(argv[1]);
-	data->time2die = ft_atoi(argv[2]);
-	data->time2eat = ft_atoi(argv[3]);
-	data->time2sleep = ft_atoi(argv[4]);
-	if (argv[5])
-		data->meals = ft_atoi(argv[5]);
-	else
-		data->meals = 0;
-	data->odd = iseven(data->philo_n);
-	return (data);
+	philo = malloc(sizeof(t_philo));
+	philo->data = data;
+	philo->id = 0;
+	philo->meals_eaten = 0;
+	philo->status = THINKING;
+	philo->eating = 0;
+	philo->last_meal = 0;
+	pthread_mutex_init(&(philo->lock), NULL);
+	// pthread_mutex_init(&(philo->r_fork), NULL);
+	// pthread_mutex_init(&(philo->l_fork), NULL);
 }
 
 int	main(int argc, char **argv)
 {
-	t_data	*data;
+	t_data		*data;
+	t_philo		*philo;
+	pthread_t	tid;
 
 	if (error_handling(argc, argv))
 		return (1);
-	data = data_init(argv);
+	data_init(data, philo, argv);
+	philo_init(philo, data);
+	create_threads(philo, data);
+	// pthread_create(&tid, NULL, &routine, NULL);
 	return (0);
 }

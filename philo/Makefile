@@ -6,7 +6,7 @@
 #    By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 16:52:32 by ekuchel           #+#    #+#              #
-#    Updated: 2023/10/14 23:22:25 by ekuchel          ###   ########.fr        #
+#    Updated: 2023/10/17 18:04:42 by ekuchel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,12 @@ NAME = philo
 
 SRC = $(S)main.c \
 	$(S)utils.c \
+	$(S)utils2.c \
+	$(S)error_handle.c \
 	$(S)error.c \
+	$(S)init.c \
+	$(S)routine.c \
+	$(S)actions.c \
 
 # List of object files derived from the source files
 OBJ = $(SRC:.c=.o)
@@ -64,7 +69,7 @@ $(NAME) : $(OBJ)
 	$(CC) $(CFLAGS) $(HDRS) -c $< -o $@
 
 run : $(NAME)
-	./$(NAME) 4 410 200 200 
+	./$(NAME) 4 410 200 200
 
 clean:
 	$(RM) -f $(OBJ)

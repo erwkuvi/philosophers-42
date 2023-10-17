@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekuchel <ekuchel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 21:58:34 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/16 14:41:38 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/17 12:01:27 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,4 @@ void	ft_putstr_fd(char *s, int fd)
 		ft_putchar_fd(s[i], fd);
 		i++;
 	}
-}
-
-int	iseven(int n)
-{
-	return (n % 2);
 }
