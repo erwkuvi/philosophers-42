@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:21:17 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/17 17:20:27 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/18 18:19:50 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,31 +58,15 @@ if (time since start of last meal > time of death)
 // 	return (NULL);
 // }
 
-void	philo_init(t_philo *philo, t_data *data)
-{
-	philo = malloc(sizeof(t_philo));
-	philo->data = data;
-	philo->id = 0;
-	philo->meals_eaten = 0;
-	philo->status = THINKING;
-	philo->eating = 0;
-	philo->last_meal = 0;
-	pthread_mutex_init(&(philo->lock), NULL);
-	// pthread_mutex_init(&(philo->r_fork), NULL);
-	// pthread_mutex_init(&(philo->l_fork), NULL);
-}
-
 int	main(int argc, char **argv)
 {
-	t_data		*data;
-	t_philo		*philo;
-	pthread_t	tid;
+	t_data	data;
 
 	if (error_handling(argc, argv))
 		return (1);
-	data_init(data, philo, argv);
-	philo_init(philo, data);
-	create_threads(philo, data);
-	// pthread_create(&tid, NULL, &routine, NULL);
+	if (data_init(&data, argv))
+		return (1);
+	// create_threads(data);
+
 	return (0);
 }

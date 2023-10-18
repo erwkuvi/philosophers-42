@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:44:05 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/17 17:57:48 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/18 18:18:22 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 # include <sys/time.h>
 # include <pthread.h>
 
-# define DEAD		0
 # define EATING		1
 # define SLEEPING	2
 # define THINKING	3
+# define DEAD		4
 # define MAX_PHILOS	200
 
 typedef struct s_philo
@@ -34,7 +34,7 @@ typedef struct s_philo
 	int				meals_eaten;
 	int				status;
 	int				eating;
-	size_t			last_meal;
+	long			death_time;
 	pthread_mutex_t	lock;
 	pthread_mutex_t	*r_fork;
 	pthread_mutex_t	*l_fork;
@@ -47,14 +47,14 @@ typedef struct s_data
 	int				meals_n;
 	int				dead_flag;
 	int				finished;
-	size_t			time2die;
-	size_t			time2eat;
-	size_t			time2sleep;
-	size_t			start_time;
+	long			time2die;
+	long			time2eat;
+	long			time2sleep;
+	long			start_time;
 	pthread_mutex_t	*fork;
 	pthread_mutex_t	lock;
 	pthread_mutex_t	write;
-	t_philo			*philos;
+	t_philo			*philo;
 }	t_data;
 
 // ANSI color codes
@@ -89,8 +89,10 @@ void	clear_data(t_data	*data);
 void	ft_exit(t_data *data);
 
 /*------ init.c ------*/
-void	data_init(t_data *data, t_philo *philos, char **argv);
-void	philo_init(t_philo *philo, t_data *data);
+int		data_init(t_data *data, char **argv);
+
+/*------ init.c ------*/
+void	join_threads(t_data *data);
 
 /*------ routine.c ------*/
 void	*philo_routine(t_philo	*philo);
