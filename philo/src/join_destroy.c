@@ -6,15 +6,15 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:24:42 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/18 18:00:10 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/19 22:26:32 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
 void	ft_pthread_join(pthread_t *tid, t_data *data)
 {
-	if (pthread_join(tid, NULL))
+	if (pthread_join(*tid, NULL))
 	{
 		error("Error, pthread_join failure", data);
 		return ;

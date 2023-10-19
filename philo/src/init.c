@@ -6,11 +6,11 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:06:18 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/18 18:19:04 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/19 22:24:29 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
 int static	philo_init(t_data *data)
 {
@@ -71,8 +71,6 @@ int	alloc_stuff(t_data *data)
 
 int	data_init(t_data *data, char **argv)
 {
-	t_data	*data;
-
 	data->thread_id = malloc (sizeof(pthread_t) * data->philos_n);
 	if (!data->thread_id)
 		return (error("Error, malloc thread_id failure", data));

@@ -6,11 +6,11 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:21:17 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/18 18:19:50 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/19 22:26:35 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
 /*
 ◦ timestamp_in_ms X has taken a fork ◦ timestamp_in_ms X is eating
@@ -66,7 +66,9 @@ int	main(int argc, char **argv)
 		return (1);
 	if (data_init(&data, argv))
 		return (1);
-	// create_threads(data);
-
+	if (create_threads(data))
+		return (1);
+	if (join_threads(data))
+		return (1);
 	return (0);
 }

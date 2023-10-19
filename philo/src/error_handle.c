@@ -6,13 +6,13 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 00:58:04 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/18 18:08:01 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/19 22:21:37 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
-int static	check_max_min_new(long value)
+static int	check_max_min_new(long value)
 {
 	int	size;
 	int	max;
@@ -54,7 +54,7 @@ static int	check_str_is_digit(char *str)
 	return (0);
 }
 
-int static	check_integer_value(char **argv)
+static int	check_integer_value(char **argv)
 {
 	int		i;
 	long	value;
@@ -83,10 +83,8 @@ int static	check_integer_value(char **argv)
 int	error_handling(int argc, char **argv)
 {
 	int	res;
-	int	flag;
 
 	res = 0;
-	flag = 0;
 	if (argc < 5 || argc > 6)
 		res = error(RED"Error, wrong number of arguments\n"RESET, NULL);
 	if (argv[1])

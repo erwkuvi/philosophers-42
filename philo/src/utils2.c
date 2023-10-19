@@ -6,11 +6,11 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 12:01:06 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/17 17:28:53 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/19 21:40:32 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
 long	gettime_in_mms(void)
 {

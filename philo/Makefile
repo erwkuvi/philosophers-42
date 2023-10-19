@@ -6,12 +6,12 @@
 #    By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 16:52:32 by ekuchel           #+#    #+#              #
-#    Updated: 2023/10/18 11:09:00 by ekuchel          ###   ########.fr        #
+#    Updated: 2023/10/19 22:19:18 by ekuchel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-S = ./
-HDRS_DIR = ./
+S = ./src/
+HDRS_DIR = ./includes/
 
 NAME = philo
 
@@ -20,9 +20,10 @@ SRC = $(S)main.c \
 	$(S)utils2.c \
 	$(S)error_handle.c \
 	$(S)error.c \
-	$(S)init.c \
-	$(S)routine.c \
-	$(S)actions.c \
+	$(S)join_destroy.c \
+	$(S)init.c 
+# $(S)routine.c \
+# $(S)actions.c 
 
 # List of object files derived from the source files
 OBJ = $(SRC:.c=.o)

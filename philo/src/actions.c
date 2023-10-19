@@ -6,11 +6,11 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:27:03 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/18 17:35:48 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/19 21:40:32 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../includes/philo.h"
 
 void	philo_thinks(t_philo *philo)
 {
