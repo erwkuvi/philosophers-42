@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: ekuchel <ekuchel@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:44:05 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/19 21:44:23 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/23 13:29:42 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 typedef struct s_philo
 {
 	struct s_data	*data;
-	pthread_t		philo_thread;
+	pthread_t		supervisor;
 	int				id;
 	int				meals_eaten;
 	int				status;
@@ -79,20 +79,21 @@ int		ft_usleep(useconds_t time);
 void	philo_thinks(t_philo *philo);
 void	philo_sleeps(t_philo *philo);
 void	philo_eats(t_philo *philo);
+int		create_threads(t_data *data);
 
 /*------ error_handle.c ------*/
 int		error_handling(int argc, char **argv);
 
 /*------ error.c ------*/
 int		error(char *str, t_data *data);
-void	clear_data(t_data	*data);
-void	ft_exit(t_data *data);
+void	free_data(t_data	*data);
+void	ft_destroy(t_data *data);
 
 /*------ init.c ------*/
 int		data_init(t_data *data, char **argv);
 
-/*------ init.c ------*/
-void	join_threads(t_data *data);
+/*------ join_destroy.c ------*/
+int		join_threads(t_data *data);
 
 /*------ routine.c ------*/
 void	*philo_routine(t_philo	*philo);

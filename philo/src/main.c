@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: ekuchel <ekuchel@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:21:17 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/19 22:26:35 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/23 13:13:54 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ int	main(int argc, char **argv)
 		return (1);
 	if (data_init(&data, argv))
 		return (1);
-	if (create_threads(data))
+	if (create_threads(&data))
 		return (1);
-	if (join_threads(data))
+	if (join_threads(&data))
 		return (1);
 	return (0);
 }
