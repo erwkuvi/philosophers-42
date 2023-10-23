@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:44:05 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/23 13:15:05 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/23 14:42:52 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_philo
 
 typedef struct s_data
 {
-	pthread_t		*thread_id;
+	pthread_t		*tid;
 	int				philos_n;
 	int				meals_n;
 	int				dead_flag;
@@ -96,6 +96,6 @@ int		data_init(t_data *data, char **argv);
 void	join_threads(t_data *data);
 
 /*------ routine.c ------*/
-void	*philo_routine(t_philo	*philo);
+void	*p_routine(t_philo	*philo);
 
 #endif

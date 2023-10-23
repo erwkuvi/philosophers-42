@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*   By: ekuchel <ekuchel@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:06:18 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/19 22:24:29 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/23 15:44:12 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ int	alloc_stuff(t_data *data)
 
 int	data_init(t_data *data, char **argv)
 {
-	data->thread_id = malloc (sizeof(pthread_t) * data->philos_n);
-	if (!data->thread_id)
-		return (error("Error, malloc thread_id failure", data));
+	data->tid = malloc (sizeof(pthread_t) * data->philos_n);
+	if (!data->tid)
+		return (error("Error, malloc tid failure", data));
 	data->philos_n = ft_atoi(argv[1]);
 	if (argv[5])
 		data->meals_n = ft_atoi(argv[5]);
@@ -85,9 +85,9 @@ int	data_init(t_data *data, char **argv)
 	data->time2eat = ft_atoil(argv[3]);
 	data->time2sleep = ft_atoil(argv[4]);
 	data->start_time = gettime_in_mms();
-	if (init_mutex_forks(data))
-		return (1);
 	if (alloc_stuff(data))
+		return (1);
+	if (init_mutex_forks(data))
 		return (1);
 	if (philo_init(data))
 		return (1);

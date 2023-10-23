@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:24:42 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/23 13:15:05 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/23 15:30:48 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	join_threads(t_data *data)
 	i = -1;
 	res = 0;
 	while (++i < data->philos_n && !res)
-		res = ft_pthread_join(&(data->philo[i].supervisor), data);
+		res = ft_pthread_join(&(data->tid[i]), data);
 	ft_destroy(data);
 	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 12:05:32 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/23 13:15:28 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/23 14:20:58 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	free_data(t_data	*data)
 	int	i;
 
 	i = -1;
-	if (data->thread_id)
-		free(data->thread_id);
+	if (data->tid)
+		free(data->tid);
 	if (data->fork)
 		free(data->fork);
 	if (data->philo)

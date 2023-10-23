@@ -6,7 +6,7 @@
 #    By: ekuchel <ekuchel@student.42wolfsburg.de>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 16:52:32 by ekuchel           #+#    #+#              #
-#    Updated: 2023/10/23 13:41:19 by ekuchel          ###   ########.fr        #
+#    Updated: 2023/10/23 16:41:27 by ekuchel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,16 +21,17 @@ SRC = $(S)main.c \
 	$(S)error_handle.c \
 	$(S)error.c \
 	$(S)join_destroy.c \
-	$(S)init.c
-# $(S)routine.c \
-# $(S)actions.c
+	$(S)init.c \
+	$(S)actions.c \
+	$(S)routine.c
 
 # List of object files derived from the source files
 OBJ = $(SRC:.c=.o)
 
 HDRS = -I$(HDRS_DIR)
 CC = @gcc
-CFLAGS = -Wall -Werror -Wextra -fsanitize=thread -g
+CFLAGS = -Wall -Werror -Wextra
+LDFLAGS = -fsanitize=thread -g -pthread
 #valgrind --tool=helgrind ./philo <args>
 #valgrind --tool=drd ./philo <args>
 
@@ -65,7 +66,7 @@ $(NAME) : $(OBJ)
 	@echo "$(RED)";
 	$(BANNER_PHILO)
 	@echo "$(GREEN)Philosophers Done!$(RESET)";
-	$(CC) $(CFLAGS) -pthread $(HDRS) $^ -o $@
+	$(CC) $(CFLAGS) $(LDFLAGS) $(HDRS) $^ -o $@
 # @echo "$(YELLOW)Compiling Philosophers ...$(RESET)";
 
 %.o: %.c
@@ -83,7 +84,12 @@ fclean: clean
 
 re: fclean all run
 
-.PHONY: all clean fclean re run
+git: fclean
+	git add ./
+	git commit -m "$m"
+	git push
+
+.PHONY: all clean fclean re run git
 #%.o:%.c
 # $(CC) $(CFLAGS) .c $^-o $@
 
