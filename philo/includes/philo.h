@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:44:05 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/24 16:44:15 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/24 18:01:59 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,6 @@ int		ft_isdigit(int c);
 void	ft_putstr_fd(char *s, int fd);
 long	gettime_in_mms(void);
 void	ft_usleep_mms(long time);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-size_t	ft_strlen(const char *s);
 
 /*------ actions.c ------*/
 // void	philo_thinks(t_philo *philo);
