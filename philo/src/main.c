@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekuchel <ekuchel@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:21:17 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/23 13:13:54 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/24 15:20:54 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,7 @@ Peak delay: 5.041ms*/
 if (time since start of last meal > time of death)
 	Philosopher dies.*/
 
-/*1. Proposal - Semaphores
 
-*/
 // void	*ft_print(t_philo *philo)
 // {
 // 	// printf("%d %s has taken a fork", philo->philo_n);

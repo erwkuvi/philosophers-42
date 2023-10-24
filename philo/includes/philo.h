@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekuchel <ekuchel@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:44:05 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/23 14:56:40 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/24 16:44:15 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define EATING		1
 # define SLEEPING	2
 # define THINKING	3
-# define DEAD		4
+# define DEATH		4
 # define MAX_PHILOS	200
 
 typedef struct s_philo
@@ -34,7 +34,7 @@ typedef struct s_philo
 	int				meals_eaten;
 	int				status;
 	int				eating;
-	long			death_time;
+	long			time_to_die;
 	pthread_mutex_t	lock;
 	pthread_mutex_t	*r_fork;
 	pthread_mutex_t	*l_fork;
@@ -73,12 +73,14 @@ long	ft_atoil(const char *str);
 int		ft_isdigit(int c);
 void	ft_putstr_fd(char *s, int fd);
 long	gettime_in_mms(void);
-int		ft_usleep(useconds_t time);
+void	ft_usleep_mms(long time);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+size_t	ft_strlen(const char *s);
 
 /*------ actions.c ------*/
-void	philo_thinks(t_philo *philo);
-void	philo_sleeps(t_philo *philo);
-void	philo_eats(t_philo *philo);
+// void	philo_thinks(t_philo *philo);
+// void	philo_sleeps(t_philo *philo);
+// void	philo_eats(t_philo *philo);
 int		create_threads(t_data *data);
 
 /*------ error_handle.c ------*/

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ekuchel <ekuchel@student.42wolfsburg.de>   +#+  +:+       +#+         #
+#    By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 16:52:32 by ekuchel           #+#    #+#              #
-#    Updated: 2023/10/23 16:42:34 by ekuchel          ###   ########.fr        #
+#    Updated: 2023/10/24 16:39:30 by ekuchel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRC = $(S)main.c \
 	$(S)error.c \
 	$(S)join_destroy.c \
 	$(S)init.c \
-	$(S)actions.c \
+	$(S)create_actions.c \
 	$(S)routine.c
 
 # List of object files derived from the source files

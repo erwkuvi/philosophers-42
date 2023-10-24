@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekuchel <ekuchel@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:06:18 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/23 15:44:12 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/24 16:28:00 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int static	philo_init(t_data *data)
 		data->philo[i].meals_eaten = 0;
 		data->philo[i].status = 0;
 		data->philo[i].eating = 0;
-		data->philo[i].death_time = data->time2die;
+		data->philo[i].time_to_die = data->time2die;
 		if (pthread_mutex_init(&(data->philo[i].lock), NULL))
 			return (error("Error, mutex init lock", data));
 		i++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekuchel <ekuchel@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:20:58 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/23 16:39:47 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/24 16:42:11 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	*sup_routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *) arg;
-
 	pthread_mutex_lock(&philo->lock);
 	printf("Printing from sup_routine philo[%d]\n", philo->id);
 	pthread_mutex_unlock(&philo->lock);
@@ -32,38 +31,32 @@ void	*sup_routine(void *arg)
 	return ((void *) 0);
 }
 
+
 void	*p_routine(void *arg)
 {
 	t_philo	*philo;
-	long	current;
 
 	philo = (t_philo *) arg;
-	current = gettime_in_mms();
-	pthread_create(&(philo->supervisor), NULL, sup_routine, (void *) philo);
-
-	while (1)
+	if (pthread_create(&(philo->supervisor), NULL, sup_routine, (void *) philo))
+		return ((void *) 0);
+	philo->time_to_die = gettime_in_mms + philo->data->time2die;
+	pthread_mutex_lock(&philo->lock);
+	printf("Transcurred time in mms: %ld from philo[%d]\n", gettime_in_mms() - philo->data->start_time, philo->id);
+	printf("Printing from  p_routine in philo[%d]\n", philo->id);
+	pthread_mutex_unlock(&philo->lock);
+	while (!philo->data->dead_flag)
 	{
-		pthread_mutex_lock(&philo->lock);
-		printf("Get Time: %ld in philo[%d]\n", current - philo->data->start_time, philo->id);
-		printf("Printing from  p_routine in philo[%d]\n", philo->id);
-		pthread_mutex_unlock(&philo->lock);
-		if (philo->data->dead_flag
-			|| philo->meals_eaten == philo->data->meals_n)
-			break ;
-	}
 
-	// while (!philo->data->dead_flag
-	// 	|| philo->meals_eaten < philo->data->meals_n)
-	// }
-	// {
+	}
+	// pthread_mutex_lock(&philo->data->lock);
+	// philo->data->finished++;
+	// pthread_mutex_unlock(&philo->data->lock);
 	//while alive
 	//eat
 	//sleep
-
 	pthread_join(philo->supervisor, NULL);
 	return ((void *) 0);
 }
-
 
 void	*meal_routine(void *arg)
 {
