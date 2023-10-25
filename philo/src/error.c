@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekuchel <ekuchel@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 12:05:32 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/23 14:20:58 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/25 15:15:00 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_destroy(t_data *data)
 		if (pthread_mutex_destroy(&(data->fork[i])))
 			ft_putstr_fd("Error, mutex_destroy fork failure", 2);
 		if (pthread_mutex_destroy(&(data->philo[i].lock)))
-			ft_putstr_fd("Error, mutex_destroy philo.lock failure", 2);
+			ft_putstr_fd("Error, mutex_destroy philo->lock failure", 2);
 	}
 	if (pthread_mutex_destroy(&(data->lock)))
 		ft_putstr_fd("Error, mutex_destroy lock failure", 2);
