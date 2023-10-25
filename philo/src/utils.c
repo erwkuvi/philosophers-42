@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 21:58:34 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/24 14:23:51 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/25 18:19:37 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,5 @@ void	ft_putstr_fd(char *s, int fd)
 		ft_putchar_fd(s[i], fd);
 		i++;
 	}
-	ft_putchar_fd('\n', fd);
 }
+	// ft_putchar_fd('\n', fd);
