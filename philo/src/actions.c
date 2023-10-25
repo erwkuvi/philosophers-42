@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_actions.c                                   :+:      :+:    :+:   */
+/*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:27:03 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/24 17:59:53 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/25 13:31:45 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,70 +20,53 @@ void	print_action(int action, t_philo *philo)
 	pthread_mutex_lock(&philo->data->lock);
 	if (action == DEATH)
 	{
-		printf(RED"%ld Philo %d died\n"RESET, time, philo->id);
+		printf(RED"%ld\t[%d] died\n"RESET, time, philo->id + 1);
 		philo->data->dead_flag = 1;
 	}
 	if (philo->data->dead_flag == 0)
 	{
 		if (action == EATING)
-			printf(GREEN"%ld Philo %d is eating\n"RESET, time, philo->id);
+			printf(GREEN"%ld\t[%d] is eating\n"RESET, time, philo->id + 1);
 		if (action == SLEEPING)
-			printf(BLUE"%ld Philo %d is sleeping\n"RESET, time, philo->id);
+			printf(BLUE"%ld\t[%d] is sleeping\n"RESET, time, philo->id + 1);
 		if (action == THINKING)
-			printf(YELLOW"%ld Philo %d is thinking\n"RESET, time, philo->id);
+			printf(YELLOW"%ld\t[%d] is thinking\n"RESET, time, philo->id + 1);
 	}
 	pthread_mutex_unlock(&philo->data->lock);
 }
 
-// void	philo_thinks(t_philo *philo)
-// {
-// 	printf(BLUE"%ld "RESET, gettime_in_mms);
-// 	printf(GREEN"%d is thinking\n"RESET, philo->id);
-// }
+void	philo_thinks(t_philo *philo)
+{
+	print_action(THINKING, philo);
+}
 
-// void	philo_sleeps(t_philo *philo)
-// {
-// 	printf(BLUE"%ld "RESET, gettime_in_mms);
-// 	printf(GREEN"%d is sleeping\n"RESET, philo->id);
-// }
+void	philo_sleeps(t_philo *philo)
+{
+	print_action(SLEEPING, philo);
+	ft_usleep_3(philo->data->time2sleep);
+}
 
 void	picking_forks(t_philo *philo)
 {
 	long	time;
 
 	time = gettime_in_mms() - philo->data->start_time;
-	pthread_mutex_lock(&philo->l_fork);
-	printf("%ld Philo %d has taken a fork\n", time, philo->id);
-	pthread_mutex_lock(&philo->r_fork);
-	printf("%ld Philo %d has taken a fork\n", time, philo->id);
+	pthread_mutex_lock(philo->l_fork);
+	printf("%ld\t[%d] has taken a fork\n", time, philo->id + 1);
+	pthread_mutex_lock(philo->r_fork);
+	printf("%ld\t[%d] has taken a fork\n", time, philo->id + 1);
 }
 
 void	philo_eats(t_philo *philo)
 {
 	picking_forks(philo);
 	philo->eating = 1;
+	philo->time_to_die = gettime_in_mms() + philo->data->time2die;
 	print_action(EATING, philo);
-	ft_usleep_mms(philo->data->time2eat);
+	philo->meals_eaten++;
+	ft_usleep_3(philo->data->time2eat);
 	philo->eating = 0;
 	pthread_mutex_unlock(philo->r_fork);
 	pthread_mutex_unlock(philo->l_fork);
-	ft_usleep(philo->data->time2sleep);
 }
 
-int	create_threads(t_data *data)
-{
-	pthread_t	meals_check;
-	int			i;
-
-	if (data->meals_n != -1)
-		pthread_create(&meals_check, NULL, meal_routine, (void *) data);
-	i = -1;
-	while (++i < data->philos_n)
-	{
-		if (pthread_create(&(data->tid[i]), NULL, p_routine, &data->philo[i]))
-			return (error("Error, pthread_create failure", data));
-	}
-	if (data->meals_n != -1)
-		pthread_join(meals_check, NULL);
-	return (0);
-}

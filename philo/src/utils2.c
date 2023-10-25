@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 12:01:06 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/24 16:43:21 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/25 12:35:01 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,24 @@ void	ft_usleep_mms(long time)
 	usleep(mms);
 }
 
+void	ft_usleep_2(useconds_t time)
+{
+	u_int64_t	start;
+
+	start = gettime_in_mms();
+	while ((gettime_in_mms() - start) < time)
+		usleep(time / 10);
+}
+
+int	ft_usleep_3(size_t milliseconds)
+{
+	size_t	start;
+
+	start = gettime_in_mms();
+	while ((gettime_in_mms() - start) < milliseconds)
+		usleep(500);
+	return (0);
+}
 // size_t	ft_strlen(const char *s)
 // {
 // 	size_t	i;
