@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:21:17 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/26 14:14:08 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/26 14:17:36 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	one_philo(t_data *data)
 	{
 		if (data->dead_flag)
 		{
+			pthread_mutex_destroy(&data->fork[0]);
 			pthread_detach(data->tid[0]);
 			break ;
 		}
