@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:44:05 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/25 17:04:33 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/26 16:28:39 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,11 @@ int		data_init(t_data *data, char **argv);
 
 /*------ join_destroy.c ------*/
 int		join_threads(t_data *data);
+int		one_philo(t_data *data);
 
-/*------ routine.c ------*/
+/*------ routine_threads.c ------*/
 void	*p_routine(void	*arg);
 void	*meal_routine(void *arg);
+void	*one_routine(void *arg);
 
 #endif

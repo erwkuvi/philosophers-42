@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:20:58 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/26 14:15:36 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/26 16:28:27 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,22 @@ int	create_threads(t_data *data)
 	if (data->meals_n != -1)
 		pthread_join(meals_check, 0);
 	return (0);
+}
+
+void	*one_routine(void *arg)
+{
+	t_philo	*philo;
+	long	time;
+	long	timetodie;
+
+	philo = (t_philo *) arg;
+	printf("Here\n");
+	philo->time_to_die = gettime_in_mms() + philo->data->time2die;
+	time = gettime_in_mms() - philo->data->start_time;
+	timetodie = philo->data->time2die;
+	printf(CYAN"%ld\t %d has taken a fork\n"RESET, time, philo->id + 1);
+	ft_usleep_3(philo->data->time2die);
+	printf(RED"%ld\t %d died\n"RESET, time + timetodie, philo->id + 1);
+
+	return ((void *) 0);
 }

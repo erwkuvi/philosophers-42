@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:21:17 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/26 14:17:36 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/26 16:28:20 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,23 +58,37 @@ if (time since start of last meal > time of death)
 // 		printf("FORKS [%d] here \n", i);
 // }
 
-int	one_philo(t_data *data)
-{
-	if (pthread_create(&data->tid[0], NULL, p_routine, &data->philo[0]))
-		return (error("Error, pthread_create failure\n", data));
-	while (1)
-	{
-		if (data->dead_flag)
-		{
-			pthread_mutex_destroy(&data->fork[0]);
-			pthread_detach(data->tid[0]);
-			break ;
-		}
-		// ft_usleep_3(1);
-	}
-	ft_destroy(data);
-	return (0);
-}
+// void	*only_one(void *arg)
+// {
+// 	long	time;
+// 	t_philo	*philo;
+
+// 	philo = (t_philo *) arg;
+// 	time = gettime_in_mms() - philo->data->start_time;
+// 	printf(CYAN"%ld\t 1 has taken a fork\n"RESET, time);
+// 	ft_usleep_3(philo->data->time2die);
+// 	printf(RED"%ld\t 1 died\n"RESET, time + philo->data->time2die);
+// }
+
+// int	one_philo(t_data *data, char **argv)
+// {
+// 	data->time2die = ft_atoil(argv[2]);
+// 	data->start_time = gettime_in_mms();
+// 	data->tid = malloc (sizeof(pthread_t));
+// 	if (!data->tid)
+// 		return (error("Error, malloc tid array failure", data));
+// 	data->philo = malloc(sizeof(t_philo));
+// 	if (!data->philo)
+// 		return (error("Error, malloc philos array failure", data));
+// 	if (pthread_create(&(data->tid[0]), NULL, p_routine, &data->philo[0]))
+// 		return (error("Error, pthread_create failure\n", data));
+// 	if (pthread_join(data->tid[0], NULL))
+// 		return (error("Error, pthread_join failure\n", data));
+
+// 	return (0);
+// }
+
+
 
 int	main(int argc, char **argv)
 {
@@ -86,7 +100,7 @@ int	main(int argc, char **argv)
 		return (1);
 	if (data.philos_n == 1)
 		return (one_philo(&data));
-	else if (create_threads(&data))
+	if (create_threads(&data))
 		return (1);
 	if (join_threads(&data))
 		return (1);

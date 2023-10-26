@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:27:03 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/26 13:52:11 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/26 15:24:00 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ void	picking_forks(t_philo *philo)
 
 	time = gettime_in_mms() - philo->data->start_time;
 	pthread_mutex_lock(philo->l_fork);
-	printf(CYAN"%ld\t %d has taken a fork L\n"RESET, time, philo->id + 1);
+	printf(CYAN"%ld\t %d has taken a fork\n"RESET, time, philo->id + 1);
 	pthread_mutex_lock(philo->r_fork);
-	printf(CYAN"%ld\t %d has taken a fork R\n"RESET, time, philo->id + 1);
+	printf(CYAN"%ld\t %d has taken a fork\n"RESET, time, philo->id + 1);
 }
 
 void	philo_eats(t_philo *philo)
