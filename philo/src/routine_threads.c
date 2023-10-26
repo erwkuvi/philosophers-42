@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:20:58 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/26 16:28:27 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/26 17:23:32 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,24 @@ void	*sup_routine(void *arg)
 	}
 	return ((void *) 0);
 }
+// void	sup_routine2(t_philo *philo)
+// {
+// 	pthread_mutex_lock(&philo->lock);
+// 	if (gettime_in_mms() >= philo->time_to_die && !philo->eating)
+// 		print_action(DYING, philo);
+// 	if (philo->data->meals_n != -1)
+// 	{
+// 		if (philo->meals_eaten == philo->data->meals_n)
+// 		{
+// 			pthread_mutex_lock(&philo->data->lock);
+// 			philo->data->finished++;
+// 			philo->meals_eaten++;
+// 			philo->status = 1;
+// 			pthread_mutex_unlock(&philo->data->lock);
+// 		}
+// 	}
+// 	pthread_mutex_unlock(&philo->lock);
+// }
 
 void	*p_routine(void *arg)
 {
@@ -50,11 +68,28 @@ void	*p_routine(void *arg)
 	{
 		philo_eats(philo);
 		philo_sleeps(philo);
-		philo_thinks(philo);
+		// philo_thinks(philo);
 	}
 	pthread_join(philo->supervisor, 0);
 	return ((void *) 0);
 }
+
+// void	*p_routine(void *arg)
+// {
+// 	t_philo	*philo;
+
+// 	philo = (t_philo *) arg;
+// 	philo->time_to_die = gettime_in_mms() + philo->data->time2die;
+// 	while (!philo->data->dead_flag && !philo->status)
+// 	{
+// 		philo_eats(philo);
+// 		philo_sleeps(philo);
+// 		philo_thinks(philo);
+// 		sup_routine2(philo);
+// 	}
+// 	pthread_join(philo->supervisor, 0);
+// 	return ((void *) 0);
+// }
 
 void	*meal_routine(void *arg)
 {
