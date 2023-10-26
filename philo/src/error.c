@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 12:05:32 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/25 15:15:00 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/26 13:57:35 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,18 @@ void	ft_destroy(t_data *data)
 	i = -1;
 	while (++i < data->philos_n)
 	{
-		if (pthread_mutex_destroy(&(data->fork[i])))
-			ft_putstr_fd("Error, mutex_destroy fork failure", 2);
+		if (data->fork)
+		{
+			if (pthread_mutex_destroy(&(data->fork[i])))
+				ft_putstr_fd("Error, mutex_destroy fork failure\n", 2);
+		}
 		if (pthread_mutex_destroy(&(data->philo[i].lock)))
-			ft_putstr_fd("Error, mutex_destroy philo->lock failure", 2);
+			ft_putstr_fd("Error, mutex_destroy philo->lock failure\n", 2);
 	}
 	if (pthread_mutex_destroy(&(data->lock)))
-		ft_putstr_fd("Error, mutex_destroy lock failure", 2);
+		ft_putstr_fd("Error, mutex_destroy lock failure\n", 2);
 	if (pthread_mutex_destroy(&(data->write)))
-		ft_putstr_fd("Error, mutex_destroy write failure", 2);
+		ft_putstr_fd("Error, mutex_destroy write failure\n", 2);
 	free_data(data);
 }
 

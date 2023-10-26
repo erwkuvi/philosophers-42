@@ -6,7 +6,7 @@
 #    By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 16:52:32 by ekuchel           #+#    #+#              #
-#    Updated: 2023/10/25 12:32:33 by ekuchel          ###   ########.fr        #
+#    Updated: 2023/10/26 11:37:16 by ekuchel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC = $(S)main.c \
 	$(S)join_destroy.c \
 	$(S)init.c \
 	$(S)actions.c \
-	$(S)routine.c
+	$(S)routine_threads.c
 
 # List of object files derived from the source files
 OBJ = $(SRC:.c=.o)

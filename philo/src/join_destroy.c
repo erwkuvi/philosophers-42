@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   join_destroy.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ekuchel <ekuchel@student.42wolfsburg.de>   +#+  +:+       +#+        */
+/*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:24:42 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/23 15:30:48 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/26 12:42:58 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_pthread_join(pthread_t *tid, t_data *data)
 {
 	if (pthread_join(*tid, NULL))
-		return (error("Error, pthread_join failure", data));
+		return (error("Error, pthread_join failure\n", data));
 	return (0);
 }
 

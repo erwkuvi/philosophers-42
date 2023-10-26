@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 17:21:17 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/24 15:20:54 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/26 14:14:08 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,31 @@ Peak delay: 5.041ms*/
 if (time since start of last meal > time of death)
 	Philosopher dies.*/
 
-
-// void	*ft_print(t_philo *philo)
+// void	printforks(t_data data)
 // {
-// 	// printf("%d %s has taken a fork", philo->philo_n);
-// 	return (NULL);
+// 	int	i;
+
+// 	i = -1;
+// 	while (data.fork[i])
+// 		printf("FORKS [%d] here \n", i);
 // }
+
+int	one_philo(t_data *data)
+{
+	if (pthread_create(&data->tid[0], NULL, p_routine, &data->philo[0]))
+		return (error("Error, pthread_create failure\n", data));
+	while (1)
+	{
+		if (data->dead_flag)
+		{
+			pthread_detach(data->tid[0]);
+			break ;
+		}
+		// ft_usleep_3(1);
+	}
+	ft_destroy(data);
+	return (0);
+}
 
 int	main(int argc, char **argv)
 {
@@ -64,7 +83,9 @@ int	main(int argc, char **argv)
 		return (1);
 	if (data_init(&data, argv))
 		return (1);
-	if (create_threads(&data))
+	if (data.philos_n == 1)
+		return (one_philo(&data));
+	else if (create_threads(&data))
 		return (1);
 	if (join_threads(&data))
 		return (1);

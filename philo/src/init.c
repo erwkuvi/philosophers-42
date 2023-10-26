@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:06:18 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/25 17:04:42 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/26 12:18:13 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,12 @@ int static	init_mutex_forks(t_data *data)
 
 int	alloc_stuff(t_data *data)
 {
+	data->tid = malloc (sizeof(pthread_t) * data->philos_n);
+	if (!data->tid)
+		return (error("Error, malloc tid array failure", data));
 	data->fork = malloc(sizeof(pthread_mutex_t) * data->philos_n);
 	if (!data->fork)
-		return (error("Error, malloc fork failure", data));
+		return (error("Error, malloc fork array failure", data));
 	data->philo = malloc(sizeof(t_philo) * data->philos_n);
 	if (!data->philo)
 		return (error("Error, malloc philos array failure", data));
@@ -71,9 +74,7 @@ int	alloc_stuff(t_data *data)
 
 int	data_init(t_data *data, char **argv)
 {
-	data->tid = malloc (sizeof(pthread_t) * data->philos_n);
-	if (!data->tid)
-		return (error("Error, malloc tid failure", data));
+	data->start_time = gettime_in_mms();
 	data->philos_n = ft_atoi(argv[1]);
 	if (argv[5])
 		data->meals_n = ft_atoi(argv[5]);
@@ -84,7 +85,6 @@ int	data_init(t_data *data, char **argv)
 	data->time2die = ft_atoil(argv[2]);
 	data->time2eat = ft_atoil(argv[3]);
 	data->time2sleep = ft_atoil(argv[4]);
-	data->start_time = gettime_in_mms();
 	if (alloc_stuff(data))
 		return (1);
 	if (init_mutex_forks(data))

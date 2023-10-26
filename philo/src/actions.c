@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:27:03 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/25 18:00:20 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/26 13:52:11 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,22 @@ void	print_action(int action, t_philo *philo)
 {
 	long	time;
 
-	time = gettime_in_mms() - philo->data->start_time;
 	pthread_mutex_lock(&philo->data->write);
 	if (action == DYING && philo->eating == 0)
 	{
-		printf(RED"%ld\t[%d] died\n"RESET, time, philo->id + 1);
+		time = gettime_in_mms() - philo->data->start_time;
+		printf(RED"%ld\t %d died\n"RESET, time, philo->id + 1);
 		philo->data->dead_flag = 1;
 	}
 	if (philo->data->dead_flag == 0)
 	{
+		time = gettime_in_mms() - philo->data->start_time;
 		if (action == EATING)
-			printf(GREEN"%ld\t[%d] is eating\n"RESET, time, philo->id + 1);
+			printf(GREEN"%ld\t %d is eating\n"RESET, time, philo->id + 1);
 		if (action == SLEEPING)
-			printf(BLUE"%ld\t[%d] is sleeping\n"RESET, time, philo->id + 1);
+			printf(BLUE"%ld\t %d is sleeping\n"RESET, time, philo->id + 1);
 		if (action == THINKING)
-			printf(YELLOW"%ld\t[%d] is thinking\n"RESET, time, philo->id + 1);
+			printf(YELLOW"%ld\t %d  is thinking\n"RESET, time, philo->id + 1);
 	}
 	pthread_mutex_unlock(&philo->data->write);
 }
@@ -52,9 +53,9 @@ void	picking_forks(t_philo *philo)
 
 	time = gettime_in_mms() - philo->data->start_time;
 	pthread_mutex_lock(philo->l_fork);
-	printf("%ld\t[%d] has taken a fork\n", time, philo->id + 1);
+	printf(CYAN"%ld\t %d has taken a fork L\n"RESET, time, philo->id + 1);
 	pthread_mutex_lock(philo->r_fork);
-	printf("%ld\t[%d] has taken a fork\n", time, philo->id + 1);
+	printf(CYAN"%ld\t %d has taken a fork R\n"RESET, time, philo->id + 1);
 }
 
 void	philo_eats(t_philo *philo)

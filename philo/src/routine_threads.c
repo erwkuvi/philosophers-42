@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   routine_threads.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:20:58 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/25 17:59:46 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/26 14:15:36 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@ void	*sup_routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *) arg;
-	/*Time of last meal = Time of start eating.
-	if (time since start of last meal > time of death)
-	Philosopher dies.*/
 	while (!philo->data->dead_flag)
 	{
 		pthread_mutex_lock(&philo->lock);
@@ -33,7 +30,6 @@ void	*sup_routine(void *arg)
 				philo->data->finished++;
 				philo->meals_eaten++;
 				philo->status = 1;
-				printf("\t\t\tFinished number: %d by [%d]\n", philo->data->finished, philo->id + 1);
 				pthread_mutex_unlock(&philo->data->lock);
 			}
 		}
@@ -50,14 +46,13 @@ void	*p_routine(void *arg)
 	philo->time_to_die = gettime_in_mms() + philo->data->time2die;
 	if (pthread_create(&(philo->supervisor), NULL, sup_routine, (void *) philo))
 		return ((void *) 0);
-	while (!philo->data->dead_flag)
+	while (!philo->data->dead_flag && !philo->status)
 	{
-		if (!philo->status)
-			philo_eats(philo);
+		philo_eats(philo);
 		philo_sleeps(philo);
 		philo_thinks(philo);
 	}
-	pthread_join(philo->supervisor, NULL);
+	pthread_join(philo->supervisor, 0);
 	return ((void *) 0);
 }
 
@@ -87,9 +82,9 @@ int	create_threads(t_data *data)
 	while (++i < data->philos_n)
 	{
 		if (pthread_create(&(data->tid[i]), NULL, p_routine, &data->philo[i]))
-			return (error("Error, pthread_create failure", data));
+			return (error("Error, pthread_create failure\n", data));
 	}
 	if (data->meals_n != -1)
-		pthread_join(meals_check, NULL);
+		pthread_join(meals_check, 0);
 	return (0);
 }
