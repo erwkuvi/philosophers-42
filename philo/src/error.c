@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 12:05:32 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/26 16:18:17 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/27 13:50:24 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,7 @@ void	free_data(t_data	*data)
 	if (data->fork)
 		free(data->fork);
 	if (data->philo)
-	{
-		while (++i < data->philos_n)
-			free(&data->philo[i]);
 		free(data->philo);
-	}
 }
 
 void	ft_destroy(t_data *data)

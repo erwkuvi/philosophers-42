@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 12:01:06 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/25 12:35:01 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/27 11:57:44 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,6 @@ long	gettime_in_mms(void)
 	return ((start_time.tv_sec * (uint64_t)1000) + (start_time.tv_usec / 1000));
 }
 
-void	ft_usleep_mms(long time)
-{
-	long	mms;
-
-	mms = time * 1000;
-	usleep(mms);
-}
-
-void	ft_usleep_2(useconds_t time)
-{
-	u_int64_t	start;
-
-	start = gettime_in_mms();
-	while ((gettime_in_mms() - start) < time)
-		usleep(time / 10);
-}
-
 int	ft_usleep_3(size_t milliseconds)
 {
 	size_t	start;
@@ -56,38 +39,3 @@ int	ft_usleep_3(size_t milliseconds)
 		usleep(500);
 	return (0);
 }
-// size_t	ft_strlen(const char *s)
-// {
-// 	size_t	i;
-
-// 	i = 0;
-// 	if (s == 0)
-// 		return (0);
-// 	if (!s[i])
-// 		return (0);
-// 	while (s[i] != '\0')
-// 		i++;
-// 	return (i);
-// }
-
-// int	ft_strncmp(const char *s1, const char *s2, size_t n)
-// {
-// 	size_t				i;
-// 	unsigned char		*str1;
-// 	unsigned char		*str2;
-
-// 	i = 0;
-// 	if ((!s1 && !s2) || n == 0)
-// 		return (0);
-// 	if (!s1 || !s2)
-// 		return (1);
-// 	str1 = (unsigned char *)s1;
-// 	str2 = (unsigned char *)s2;
-// 	while ((str1[i] || str2[i]) && i < n)
-// 	{
-// 		if (str1[i] != str2[i])
-// 			return (str1[i] - str2[i]);
-// 		i++;
-// 	}
-// 	return (0);
-// }

@@ -6,7 +6,7 @@
 #    By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 16:52:32 by ekuchel           #+#    #+#              #
-#    Updated: 2023/10/26 17:16:18 by ekuchel          ###   ########.fr        #
+#    Updated: 2023/10/27 15:01:20 by ekuchel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,8 @@ OBJ = $(SRC:.c=.o)
 
 HDRS = -I$(HDRS_DIR)
 CC = @gcc
-CFLAGS = -Wall -Werror -Wextra
-LDFLAGS = -fsanitize=thread -g -pthread
+CFLAGS = -Wall -Werror -Wextra -pthread
+LDFLAGS = -fsanitize=thread -g
 #valgrind --tool=helgrind ./philo <args>
 #valgrind --tool=drd ./philo <args>
 

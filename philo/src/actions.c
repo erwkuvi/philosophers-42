@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:27:03 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/26 15:24:00 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/27 14:25:15 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	print_action(int action, t_philo *philo)
 	long	time;
 
 	pthread_mutex_lock(&philo->data->write);
-	if (action == DYING && philo->eating == 0)
+	if (action == DYING && !philo->eating && philo->status == 0)
 	{
 		time = gettime_in_mms() - philo->data->start_time;
 		printf(RED"%ld\t %d died\n"RESET, time, philo->id + 1);
 		philo->data->dead_flag = 1;
 	}
-	if (philo->data->dead_flag == 0)
+	if (!philo->data->dead_flag)
 	{
 		time = gettime_in_mms() - philo->data->start_time;
 		if (action == EATING)
@@ -31,7 +31,9 @@ void	print_action(int action, t_philo *philo)
 		if (action == SLEEPING)
 			printf(BLUE"%ld\t %d is sleeping\n"RESET, time, philo->id + 1);
 		if (action == THINKING)
-			printf(YELLOW"%ld\t %d  is thinking\n"RESET, time, philo->id + 1);
+			printf(YELLOW"%ld\t %d is thinking\n"RESET, time, philo->id + 1);
+		if (action == FORKING)
+			printf(CYAN"%ld\t %d has taken a fork\n"RESET, time, philo->id + 1);
 	}
 	pthread_mutex_unlock(&philo->data->write);
 }
@@ -53,9 +55,9 @@ void	picking_forks(t_philo *philo)
 
 	time = gettime_in_mms() - philo->data->start_time;
 	pthread_mutex_lock(philo->l_fork);
-	printf(CYAN"%ld\t %d has taken a fork\n"RESET, time, philo->id + 1);
+	print_action(FORKING, philo);
 	pthread_mutex_lock(philo->r_fork);
-	printf(CYAN"%ld\t %d has taken a fork\n"RESET, time, philo->id + 1);
+	print_action(FORKING, philo);
 }
 
 void	philo_eats(t_philo *philo)

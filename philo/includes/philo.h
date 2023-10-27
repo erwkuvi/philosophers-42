@@ -6,7 +6,7 @@
 /*   By: ekuchel <ekuchel@student.42wolfsburg.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:44:05 by ekuchel           #+#    #+#             */
-/*   Updated: 2023/10/26 16:28:39 by ekuchel          ###   ########.fr       */
+/*   Updated: 2023/10/27 12:08:40 by ekuchel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define SLEEPING	2
 # define THINKING	3
 # define DYING		4
+# define FORKING	5
 # define MAX_PHILOS	200
 
 typedef struct s_philo
@@ -73,8 +74,6 @@ long	ft_atoil(const char *str);
 int		ft_isdigit(int c);
 void	ft_putstr_fd(char *s, int fd);
 long	gettime_in_mms(void);
-void	ft_usleep_mms(long time);
-void	ft_usleep_2(useconds_t time);
 int		ft_usleep_3(size_t milliseconds);
 
 /*------ actions.c ------*/
@@ -83,7 +82,6 @@ void	philo_thinks(t_philo *philo);
 void	philo_sleeps(t_philo *philo);
 void	philo_eats(t_philo *philo);
 int		create_threads(t_data *data);
-void	ft_usleep_mms(long time);
 
 /*------ error_handle.c ------*/
 int		error_handling(int argc, char **argv);
