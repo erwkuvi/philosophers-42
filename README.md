@@ -1,4 +1,5 @@
 # philosophers-42
+
 In this project, you will learn the basics of threading a process. You will see how to create threads and you will discover mutexes.
 
 - The project is inspired by the Dining Philosophers problem, which is a classic synchronization and concurrency problem in computer science.
@@ -11,7 +12,7 @@ In this project, you will learn the basics of threading a process. You will see 
 
 The challenge is to ensure that philosophers can eat without causing deadlocks, which occurs when they all pick up one fork and are unable to pick up the second fork because it's already in use by another philosopher.
 
-Project Objectives:
+### Project Objectives:
 
 - Implement a program that simulates the philosophers and their dining process.
 
@@ -46,7 +47,9 @@ sem_t -> declaration
 sem_init()
 --> Semaphore <-- end
 
+
 Ext. functs:
+```c
 void	*memset(void *b, int c, size_t len); -> The memset() function writes len bytes of value c (converted to an unsigned char) to the string b.
 int		usleep(useconds_t microseconds); -> suspend thread execution for an interval measured in microseconds
 int		gettimeofday(struct timeval *restrict tp, void *restrict tzp); -> get date and time
