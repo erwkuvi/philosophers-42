@@ -22,8 +22,10 @@ Project Objectives:
 - Explore different solutions to the Dining Philosophers problem, such as avoiding deadlock, starvation, and achieving fairness.
 
 
-What are Threads?
-	Threads in the context of APIs (Application Programming Interfaces) typically refer to threads of execution within a program. Threads are a fundamental concept in multithreading, which is a way to achieve concurrent execution of code in a single process. APIs that deal with threads provide functions and mechanisms for managing and controlling these threads.
+### What are Threads?
+
+Threads in the context of APIs (Application Programming Interfaces) typically refer to threads of execution within a program. Threads are a fundamental concept in multithreading, which is a way to achieve concurrent execution of code in a single process. APIs that deal with threads provide functions and mechanisms for managing and controlling these threads.
+
 
 pthread.h
 
